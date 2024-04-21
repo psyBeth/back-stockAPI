@@ -42,7 +42,7 @@ app.use(require('./src/middlewares/findSearchSortPage'))
 // Routes:
 
 // HomePath:
-app.all('/', (req, res) => {
+app.all("/api/v1/documents", (req, res) => {
     
     res.send(`
         <h3>Stock Management API Service</h3>
@@ -50,16 +50,16 @@ app.all('/', (req, res) => {
         <p>
             Documents:
             <ul> 
-                <li><a href="/documents/swagger">SWAGGER</a></li>
-                <li><a href="/documents/redoc">REDOC</a></li>
-                <li><a href="/documents/json">JSON</a></li>
+                <li><a href="/api/v1/documents/swagger">SWAGGER</a></li>
+                <li><a href="/api/v1/documents/redoc">REDOC</a></li>
+                <li><a href="/api/v1/documents/json">JSON</a></li>
             </ul>
         </p>
     `)
 })
 
 // Routes:
-app.use(require('./src/routes'))
+app.use("/api/v1", require('./src/routes'))
 
 /* ------------------------------------------------------- */
 
@@ -69,4 +69,4 @@ app.use(require('./src/middlewares/errorHandler'))
 // RUN SERVER:
 app.listen(PORT, () => console.log(`http://${HOST}:${PORT}`));
 
-require('./src/helpers/sync')();
+// require('./src/helpers/sync')();
