@@ -79,4 +79,6 @@ app.use(require('./src/middlewares/errorHandler'))
 // RUN SERVER:
 app.listen(PORT, () => console.log(`http://${HOST}:${PORT}`));
 
-// require('./src/helpers/sync')();
+if(process.env.NODE_ENV == "development") {
+    require("./src/configs/sync");
+};
